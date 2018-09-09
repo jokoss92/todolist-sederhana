@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <title>TodoList</title>
+</head>
+<body>
+    <div class="container">
+        <h3>Daftar Menu Makanan</h3>
+        <input id="input-makanan"placeholders="Masukan Makanan"/>
+        <button id="button-simpan" type="button" margin=10px class="btn btn-secondary">Simpan</button>
+        <ul id="list" class="list-group">
+            <li class="list-group-item">Tahu</li>
+            <li class="list-group-item">Tempe</li>
+            <li class="list-group-item">Bakso</li>
+        </ul>
+    </div>
+
+    <script>
+        const inputMakananDOM = document.getElementById('input-makanan');
+        const buttonSimpanDOM = document.getElementById('button-simpan');
+        const listDOM = document.getElementById('list');
+
+        const html = localStorage.getItem('html')
+        listDOM.innerHTML = html
+        
+        buttonSimpanDOM.addEventListener('click',function(){
+            const makanan = inputMakananDOM.value
+            //console.log(makanan)
+            listDOM.innerHTML = listDOM.innerHTML+'<li class="list-group-item">' + makanan + '</li>';
+            inputMakananDOM.value =''
+            localStorage.setItem('html', listDOM.innerHTML)
+        });
+    </script>
+</body>
+</html>
